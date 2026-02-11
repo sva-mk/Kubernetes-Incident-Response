@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencyModel:Paragon xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dependencyModel="http://www.example.org/dependencyModel" description="Kubernetes cluster is okay." probability="1.0" Type="AND">
+  <paragon description="Data Plane (DP) is functional." probability="1.0" Type="OR">
+    <paragon description="DP of Worker Node 3 is okay." probability="1.0" Type="AND">
+      <paragon description="Kubelet is okay." probability="1.0"/>
+      <paragon description="Kube Proxy is okay." probability="1.0"/>
+      <paragon description="Container runtime is okay." probability="1.0"/>
+    </paragon>
+    <paragon description="DP of Worker Node 1 is okay." probability="1.0" Type="AND">
+      <paragon description="Kubelet is okay." probability="1.0"/>
+      <paragon description="Kube Proxy is okay." probability="1.0"/>
+      <paragon description="Container runtime is okay." probability="1.0"/>
+    </paragon>
+    <paragon description="DP of Worker Node 2 is okay." probability="1.0" Type="AND">
+      <paragon description="Kubelet is okay." probability="1.0"/>
+      <paragon description="Kube Proxy is okay." probability="1.0"/>
+      <paragon description="Container runtime is okay." probability="1.0"/>
+    </paragon>
+  </paragon>
+  <paragon description="Control Plane (CP) is functional." probability="1.0" Type="OR">
+    <paragon description="CP of Master Node 2 is okay." probability="1.0" Type="AND">
+      <paragon description="API server is okay." probability="1.0"/>
+      <paragon description="Key value store is okay." probability="1.0"/>
+      <paragon description="Scheduler is okay." probability="1.0"/>
+      <paragon description="Controller-Manager ist okay." probability="1.0"/>
+      <paragon description="Network plugin is okay." probability="1.0"/>
+    </paragon>
+    <paragon description="CP of Master Node 3 is okay." probability="1.0" Type="AND">
+      <paragon description="API server is okay." probability="1.0"/>
+      <paragon description="Key value store is okay." probability="1.0"/>
+      <paragon description="Scheduler is okay." probability="1.0"/>
+      <paragon description="Controller Manager is okay." probability="1.0"/>
+      <paragon description="Network plugin is okay." probability="1.0"/>
+    </paragon>
+    <paragon description="CP of Master Node 1 is okay." probability="1.0" Type="AND">
+      <paragon description="API server is okay." probability="1.0"/>
+      <paragon description="Key value store is okay." probability="1.0"/>
+      <paragon description="Scheduler is okay." probability="1.0"/>
+      <paragon description="Controller Manager is okay." probability="1.0"/>
+      <paragon description="Network plugin is okay." probability="1.0"/>
+    </paragon>
+  </paragon>
+  <paragon description="Containerised workloads are okay." probability="1.0" Type="AND">
+    <paragon description="Container images are okay." probability="1.0"/>
+    <paragon description="Application code is okay." probability="1.0"/>
+    <paragon description="Container registry is okay." probability="1.0"/>
+    <paragon description="Application configuration is okay." probability="1.0"/>
+  </paragon>
+</dependencyModel:Paragon>

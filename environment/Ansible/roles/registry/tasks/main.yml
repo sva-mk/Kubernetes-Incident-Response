@@ -1,0 +1,76 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Install apt-transport-https
+  when: ansible_os_family == "Debian"
+  retries: 5
+  delay: 20
+  ansible.builtin.apt:
+    name: apt-transport-https
+    state: present
+    update_cache: true
+
+- name: Wait for Unattended Upgrades
+  become: true
+  ansible.builtin.command: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: Add Docker APT GPG key
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add Docker APT repository
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu jammy stable
+    state: present
+    filename: docker
+
+- name: Install docker compose
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    update_cache: true
+    name: "{{ item }}"
+    state: present
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+    - python3-pip
+
+- name: Install docker python package
+  ansible.builtin.pip:
+    name: "{{ item }}"
+  loop:
+    - docker==4.4.4
+    - docker-compose
+
+- name: Create Kubernetes config directory
+  ansible.builtin.file:
+    path: /etc/docker/registry/
+    state: directory
+    mode: "0755"
+
+- name: Copy docker registry config
+  ansible.builtin.template:
+    src: docker_registry_config.j2
+    dest: /etc/docker/registry/config.yml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Copy docker-compose config
+  ansible.builtin.template:
+    src: registry.yml
+    dest: /etc/docker/registry/docker-compose.yml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Create and start registry
+  community.docker.docker_compose:
+    project_src: /etc/docker/registry/
+  register: output

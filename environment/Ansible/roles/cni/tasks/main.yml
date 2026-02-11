@@ -1,0 +1,11 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Install cilium as CNI
+  ansible.builtin.include_tasks: cilium.yml
+  when: network_cni == "cilium" and inventory_hostname == groups['master'][0]
+
+- name: "Install other CNI Plugin: {{ network_cni }}"
+  ansible.builtin.include_tasks: init.yml
+  when: network_cni != "cilium" and kubernetes_engine != "rke2"

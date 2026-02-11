@@ -1,0 +1,62 @@
+---
+- name: Install Kubernetes packages
+  ansible.builtin.include_tasks: pkg.yml
+
+- name: Disable system swap
+  ansible.builtin.command: swapoff -a
+  changed_when: false
+
+- name: Remove current swaps from fstab
+  ansible.builtin.lineinfile:
+    dest: /etc/fstab
+    regexp: (?i)^([^#][\S]+\s+(none|swap)\s+swap.*)
+    line: "# \\1"
+    backrefs: true
+    state: present
+
+- name: Load overlay modules
+  community.general.modprobe:
+    name: overlay
+    state: present
+    params: numdummies=2
+    persistent: present
+
+- name: Load br_netfilter modules
+  community.general.modprobe:
+    name: br_netfilter
+    state: present
+    params: numdummies=2
+    persistent: present
+
+- name: Disable swappiness and pass bridged IPv4 traffic to iptable's chains
+  ansible.posix.sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { name: vm.swappiness, value: "0" }
+    - { name: net.ipv4.ip_forward, value: "1" }
+    - { name: net.bridge.bridge-nf-call-iptables, value: "1" }
+
+- name: Create service drop-in directory
+  when: pre_install_configure_kubelet
+  ansible.builtin.file:
+    path: /etc/systemd/system/kubelet.service.d/
+    state: directory
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
+    mode: "0755"
+
+- name: Copy kubeadm conf to drop-in directory
+  when: pre_install_configure_kubelet
+  ansible.builtin.template:
+    src: 20-extra-args.conf.j2
+    dest: /etc/systemd/system/kubelet.service.d/20-extra-args.conf
+    mode: "0644"
+
+- name: Reload kubelet daemon
+  when: pre_install_configure_kubelet
+  ansible.builtin.systemd:
+    name: kubelet
+    daemon_reload: true
+    enabled: true

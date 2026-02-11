@@ -1,0 +1,100 @@
+ansible-lint:
+  stage: test
+  before_script:
+    - apk add findutils
+  image: registry.gitlab.com/pipeline-components/ansible-lint:latest
+  script:
+    - find ./environment/Ansible -type f -regextype egrep -regex '.*ya?ml$' | sed -e 's#/[^/]*$##' | sort -u | while read -r dir; do
+        echo "${dir} -------------------------------------------------------";
+        cd "${CI_PROJECT_DIR}/${dir}" || exit 1;
+        ansible-lint -c ${CI_PROJECT_DIR}/.ansible-lint --show-relpath || touch "${CI_PROJECT_DIR}/ansible-validate-failed";
+      done;
+    - if [ -f "${CI_PROJECT_DIR}/ansible-validate-failed" ]; then exit 1; fi
+
+packer_format:
+  stage: test
+  needs: []
+  image:
+    name: hashicorp/packer
+    entrypoint: [""]
+  script:
+    - packer fmt -recursive -diff -check .
+  after_script: |
+    cat <<-EOD
+    ----------------------------------------------------------
+    Need help? Documentation on the terraform_format CI job can be found at:
+    https://gitlab.com/gitlab-com/gl-infra/common-ci-tasks/-/blob/main/terraform-format.md
+    EOD
+
+packer_validate:
+  stage: test
+  needs: []
+  image:
+    name: hashicorp/packer
+    entrypoint: [""]
+  before_script:
+    - packer --version
+  script:
+    - find . -type f -name '*pkr.hcl' | sed -e 's#/[^/]*$##' | sort -u | while read -r dir; do
+        echo "${dir} -------------------------------------------------------";
+        cd "${CI_PROJECT_DIR}/${dir}" || exit 1;
+        packer init .;
+        if [[ -f "./example.pkrvars.hcl" ]]; then
+            packer validate -no-warn-undeclared-var -evaluate-datasources -var-file=./example.pkrvars.hcl . || touch "${CI_PROJECT_DIR}/pkr-validate-failed";
+        else
+            packer validate -no-warn-undeclared-var -evaluate-datasources . || touch "${CI_PROJECT_DIR}/pkr-validate-failed";
+        fi
+      done;
+    - if [ -f "${CI_PROJECT_DIR}/pkr-validate-failed" ]; then exit 1; fi
+
+
+
+terraform_format:
+  stage: test
+  needs: []
+  image:
+    name: hashicorp/terraform
+    entrypoint: [""]
+  script:
+    - terraform fmt -recursive -diff -check .
+
+terraform_validate:
+  stage: test
+  needs: []
+  image:
+    name: hashicorp/terraform
+    entrypoint: [""]
+  script:
+    - find . -type f -name '*.tf' | sed -e 's#/[^/]*$##' | sort -u | while read -r dir; do
+        echo "${dir} -------------------------------------------------------";
+        cd "${CI_PROJECT_DIR}/${dir}" || exit 1;
+        terraform init -backend=false -reconfigure;
+        terraform validate || touch "${CI_PROJECT_DIR}/tf-validate-failed";
+      done;
+    - if [ -f "${CI_PROJECT_DIR}/tf-validate-failed" ]; then exit 1; fi
+
+tflint:
+  stage: test
+  needs: []
+  image:
+    name: ghcr.io/terraform-linters/tflint
+    entrypoint: [""]
+  script:
+    - rm -rf "tflint-reports/"
+    - mkdir -p "tflint-reports/"
+    - find . -type f -name '*.tf' | sed -e 's#/[^/]*$##' | sort -u | while read -r dir; do
+                junit_file="$(echo "$dir"|sed -r 's/[^a-zA-Z0-9]+/-/g' | sed -r s/^-+\|-+$//g).xml";
+        echo "${dir} -------------------------------------------------------";
+        cd "${CI_PROJECT_DIR}/${dir}" || exit 1;
+        tflint -c "${CI_PROJECT_DIR}/.tflint.hcl" --chdir=. -f compact || echo "${dir}" >> "${CI_PROJECT_DIR}/tflint-reports/failed";
+        tflint -c "${CI_PROJECT_DIR}/.tflint.hcl" --chdir=. -f junit > "${CI_PROJECT_DIR}/tflint-reports/${junit_file}";
+      done;
+    - if [ -f "${CI_PROJECT_DIR}/tflint-reports/failed" ]; then
+        echo "Failures found in:";
+        cat "${CI_PROJECT_DIR}/tflint-reports/failed";
+        exit 1;
+      fi
+  artifacts:
+    when: always
+    reports:
+      junit: tflint-reports/*.xml

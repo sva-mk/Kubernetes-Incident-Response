@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FRIPP:PlaybookProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FRIPP="http://www.example.org/FRIPP" name="Incident Response Playbook for Cryptojacking Attacks on Kubernetes " notes="" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.1" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.0" resourceUsed="//@resource.1" relatedreferences="//@externalreferences.0 //@externalreferences.1 //@externalreferences.2">
+  <artifact name="undefined">
+    <state artifactName="undefined" name="undefined"/>
+    <state artifactName="undefined" name="Test"/>
+  </artifact>
+  <artifact name="undefined">
+    <state artifactName="undefined" name="undefined">
+      <artifactstateinstance usedByActivity="//@process.0" originatingActivity="/"/>
+      <artifactstateinstance usedByActivity="/" originatingActivity="//@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.0" originatingActivity="//@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1" originatingActivity="//@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.1" originatingActivity="//@process.0/@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.2" originatingActivity="//@process.0/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.3" originatingActivity="//@process.0/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.4" originatingActivity="//@process.0/@process.3"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.5" originatingActivity="//@process.0/@process.4"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2" originatingActivity="//@process.1/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1" originatingActivity="//@process.1/@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.0/@process.1" originatingActivity="//@process.1/@process.0/@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.0/@process.2" originatingActivity="//@process.1/@process.0/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.0/@process.3" originatingActivity="//@process.1/@process.0/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1/@process.1" originatingActivity="//@process.1/@process.1/@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1/@process.2" originatingActivity="//@process.1/@process.1/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1/@process.3" originatingActivity="//@process.1/@process.1/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1/@process.4" originatingActivity="//@process.1/@process.1/@process.3"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2/@process.2" originatingActivity="//@process.1/@process.2/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2/@process.3" originatingActivity="//@process.1/@process.2/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.0/@process.0" originatingActivity="//@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.0" originatingActivity="//@process.0/@process.5"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.0" originatingActivity="//@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1" originatingActivity="//@process.1/@process.0"/>
+      <artifactstateinstance usedByActivity="//@process.1" originatingActivity="//@process.1/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1" originatingActivity="//@process.1/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1" originatingActivity="//@process.1/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.0" originatingActivity="//@process.1/@process.0/@process.3"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1/@process.0" originatingActivity="//@process.1/@process.1"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.1" originatingActivity="//@process.1/@process.1/@process.4"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2/@process.1" originatingActivity="//@process.1/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2" originatingActivity="//@process.1/@process.2/@process.3"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2/@process.0" originatingActivity="//@process.1/@process.2"/>
+      <artifactstateinstance usedByActivity="//@process.1/@process.2" originatingActivity="//@process.1/@process.2/@process.0"/>
+    </state>
+  </artifact>
+  <artifact name="Testing">
+    <state artifactName="Testing" name="undefined"/>
+    <state artifactName="Testing" name="test"/>
+  </artifact>
+  <artifact name="">
+    <state artifactName="" name="undefined"/>
+  </artifact>
+  <process xsi:type="FRIPP:PlaybookProcess" name="Analysis Phase" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.0 //@artifact.1/@state.0/@artifactstateinstance.2 //@artifact.1/@state.0/@artifactstateinstance.21" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.3 //@artifact.1/@state.0/@artifactstateinstance.20" resourceUsed="//@resource.0" relatedreferences="//@process.0/@externalreferences.0 //@externalreferences.3 //@externalreferences.4 //@externalreferences.5 //@process.0/@externalreferences.1 //@externalreferences.6">
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-N-01: Network Analysis by Creating a Cluster Overview." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.20" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.4" resourceUsed="//@process.0/@resource.0" relatedreferences="//@process.0/@externalreferences.0"/>
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-F-01: File Analysis by Exporting the Cluster Status." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.4" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.5" resourceUsed="//@process.0/@resource.0"/>
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-P-02: Process Analysis using THOR-Lite." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.5" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.6" resourceUsed="//@process.0/@resource.0"/>
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-P-03: Process Analysis using Tracee." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.6" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.7" resourceUsed="//@process.0/@resource.0"/>
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-N-02: Network Analysis by Capturing Network Packets." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.7" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.8" resourceUsed="//@process.0/@resource.0" relatedreferences="//@process.0/@externalreferences.1">
+      <process xsi:type="FRIPP:PlaybookProcess" name="A-F-02: Analyse relevanter Dateien mit VirusTotal"/>
+    </process>
+    <process xsi:type="FRIPP:PlaybookProcess" name="A-F-02: File Analysis using VirusTotal." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.8" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.21" resourceUsed="//@process.0/@resource.0"/>
+    <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+    <externalreferences name="Github: Steveteuber/Kubectl-Graph"/>
+    <externalreferences name="Cilium Documentation: Inspecting Network Flows with the CLI"/>
+    <paragon href="Kubernetes.dependencymodel#/"/>
+  </process>
+  <process xsi:type="FRIPP:PlaybookProcess" name="Containment, Eradication and Recovery Phase" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.3 //@artifact.1/@state.0/@artifactstateinstance.23 //@artifact.1/@state.0/@artifactstateinstance.24 //@artifact.1/@state.0/@artifactstateinstance.25 //@artifact.1/@state.0/@artifactstateinstance.26" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.1 //@artifact.1/@state.0/@artifactstateinstance.2 //@artifact.1/@state.0/@artifactstateinstance.22" resourceUsed="//@resource.0" relatedreferences="//@externalreferences.0 //@externalreferences.1 //@externalreferences.2">
+    <process xsi:type="FRIPP:PlaybookProcess" name="Containment Phase" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.22 //@artifact.1/@state.0/@artifactstateinstance.27" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.10 //@artifact.1/@state.0/@artifactstateinstance.23" resourceUsed="//@process.1/@resource.0" relatedreferences="//@process.1/@externalreferences.0 //@process.1/@externalreferences.1 //@process.1/@externalreferences.2 //@process.1/@externalreferences.3">
+      <process xsi:type="FRIPP:PlaybookProcess" name="C-P-01:Process Isolation by Blocking Nodes with Compromised Pods." resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.11" resourceUsed="//@process.1/@process.0/@resource.0">
+        <activityimpact originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.0/@paragon.1"/>
+        </activityimpact>
+      </process>
+      <process xsi:type="FRIPP:PlaybookProcess" name="C-N-01: Complete Network Isolation of Applications." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.11" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.12" resourceUsed="//@process.1/@process.0/@resource.0">
+        <activityimpact originalType="UNCONTROLLABLE" originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.2/@paragon.3"/>
+        </activityimpact>
+      </process>
+      <process xsi:type="FRIPP:PlaybookProcess" name="C-N-02: Partial Network Isolation of Applications." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.12" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.13" resourceUsed="//@process.1/@process.0/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="C-P-02: Process Isolation by Blocking Unauthorized Processes." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.13" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.27" resourceUsed="//@process.1/@process.0/@resource.0"/>
+      <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+      <paragon href="Kubernetes.dependencymodel#/"/>
+      <activityimpact originalType="UNCONTROLLABLE" originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.2/@paragon.3"/>
+      </activityimpact>
+      <activityimpact originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.0/@paragon.1"/>
+      </activityimpact>
+    </process>
+    <process xsi:type="FRIPP:PlaybookProcess" name="Eradication Phase" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.10 //@artifact.1/@state.0/@artifactstateinstance.29" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.9 //@artifact.1/@state.0/@artifactstateinstance.24 //@artifact.1/@state.0/@artifactstateinstance.28" resourceUsed="//@process.1/@resource.0" relatedreferences="//@process.1/@externalreferences.4 //@process.1/@externalreferences.0 //@process.1/@externalreferences.5 //@process.1/@externalreferences.6">
+      <process xsi:type="FRIPP:PlaybookProcess" name="E-P-01: Process Eradication by Updating Applications." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.28" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.14" resourceUsed="//@process.1/@process.1/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="E-A-01: Access Eradication by Removing Unauthorized Service Accounts." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.14" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.15" resourceUsed="//@process.1/@process.1/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="E-P-02: Process Eradication by Removing Unauthorized Applications." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.15" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.16" resourceUsed="//@process.1/@process.1/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="E-A-02: Access Eradication by Restricting Access to ServiceAccountToken." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.16" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.17" resourceUsed="//@process.1/@process.1/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="E-P-03: Process Eradication by Removing Nodes with Compromised Pods." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.17" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.29" resourceUsed="//@process.1/@process.1/@resource.0">
+        <activityimpact originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.0/@paragon.1"/>
+        </activityimpact>
+      </process>
+      <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+      <paragon href="Kubernetes.dependencymodel#//@paragon.0"/>
+      <activityimpact originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.0/@paragon.1"/>
+      </activityimpact>
+    </process>
+    <process xsi:type="FRIPP:PlaybookProcess" name="Recovery Phase" artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.9 //@artifact.1/@state.0/@artifactstateinstance.31 //@artifact.1/@state.0/@artifactstateinstance.33" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.25 //@artifact.1/@state.0/@artifactstateinstance.26 //@artifact.1/@state.0/@artifactstateinstance.30 //@artifact.1/@state.0/@artifactstateinstance.32" resourceUsed="//@process.1/@resource.0" relatedreferences="//@process.1/@externalreferences.7 //@process.1/@externalreferences.8 //@process.1/@externalreferences.9 //@process.1/@externalreferences.10">
+      <process xsi:type="FRIPP:PlaybookProcess" name="R-O-01: Object Recovery by Restoring the Key Value Store." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.32" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.33" resourceUsed="//@process.1/@process.2/@resource.0">
+        <activityimpact originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.1"/>
+        </activityimpact>
+        <activityimpact originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.2"/>
+        </activityimpact>
+        <activityimpact originalProbability="1.0">
+          <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.0"/>
+        </activityimpact>
+      </process>
+      <process xsi:type="FRIPP:PlaybookProcess" name="R-A-02: Access Recovery by Restoring ServiceAccounts." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.30" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.18" resourceUsed="//@process.1/@process.2/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="R-A-01: Access Recovery by Restoring Network Access." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.18" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.19" resourceUsed="//@process.1/@process.2/@resource.0"/>
+      <process xsi:type="FRIPP:PlaybookProcess" name="R-O-02: Object Recovery through the Recovery of WorkerNodes." artifactInStateUsed="//@artifact.1/@state.0/@artifactstateinstance.19" resultArtifactInState="//@artifact.1/@state.0/@artifactstateinstance.31" resourceUsed="//@process.1/@process.2/@resource.0"/>
+      <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+      <paragon href="Kubernetes.dependencymodel#//@paragon.1"/>
+      <activityimpact originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.2"/>
+      </activityimpact>
+      <activityimpact originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.0"/>
+      </activityimpact>
+      <activityimpact originalProbability="1.0">
+        <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.1"/>
+      </activityimpact>
+    </process>
+    <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+    <externalreferences name="Amazon Web Services: Incident Response and Forensics"/>
+    <externalreferences name=" Cilium Documentation: Layer 7 Protocol Visibility"/>
+    <externalreferences name="Kubernetes Documentation: Nodes"/>
+    <externalreferences name="KubeArmor: Runtime Security Enforcement"/>
+    <externalreferences name="Kubernetes Documentation: Performing a Rolling Update"/>
+    <externalreferences name="Kubernetes Documentation: Safely Drain a Node"/>
+    <externalreferences name="Kubernetes Documentation: Service Accounts"/>
+    <externalreferences name="Kubernetes Documentation: Operating Etcd Clusters for Kubernetes"/>
+    <externalreferences name="Kubernetes Documentation: Creating a Cluster with Kubeadm"/>
+    <externalreferences name="Cilium Documentation: Overview of Network Policy"/>
+    <externalreferences name="Kubernetes Documentation: Configure Service Accounts for Pods"/>
+    <paragon href="Kubernetes.dependencymodel#/"/>
+    <activityimpact originalType="UNCONTROLLABLE" originalProbability="1.0">
+      <paragon href="Kubernetes.dependencymodel#//@paragon.2/@paragon.1"/>
+    </activityimpact>
+    <activityimpact originalProbability="1.0">
+      <paragon href="Kubernetes.dependencymodel#//@paragon.0/@paragon.1"/>
+    </activityimpact>
+    <activityimpact originalProbability="1.0">
+      <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.2"/>
+    </activityimpact>
+    <activityimpact originalProbability="1.0">
+      <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.0"/>
+    </activityimpact>
+    <activityimpact originalProbability="1.0">
+      <paragon href="Kubernetes.dependencymodel#//@paragon.1/@paragon.1"/>
+    </activityimpact>
+  </process>
+  <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+  <resource xsi:type="FRIPP:Actuator" name="HUMAN"/>
+  <externalreferences referenceType="POLICY" name="NIST SP 800-61"/>
+  <externalreferences name="ISO 27035-1"/>
+  <externalreferences name="SANS Incident Handler's Handbook"/>
+  <externalreferences name="Kubernetes Documentation: Operating Etcd Clusters for Kubernetes"/>
+  <externalreferences name="Nextron Systems: How to Scan Docker Containers Using THOR"/>
+  <externalreferences name="Tracee Documentation: Forensics"/>
+  <externalreferences name="VirusTotal Documentation: Get a File Report"/>
+  <paragon href="Kubernetes.dependencymodel#/"/>
+</FRIPP:PlaybookProcess>

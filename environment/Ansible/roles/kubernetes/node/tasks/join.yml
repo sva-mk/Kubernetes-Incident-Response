@@ -1,0 +1,14 @@
+---
+- name: join | Reset Kubernetes component
+  ansible.builtin.command: kubeadm reset --force --cri-socket=/var/run/{{ container_runtime }}/{{ container_runtime }}.sock
+  register: reset_cluster
+
+- name: join | Join to Kubernetes cluster
+  when: reset_cluster is succeeded
+  ansible.builtin.command: "{{ hostvars[groups['master'][0]].token.stdout }} --certificate-key {{ hostvars[groups['master'][0]].certificate_key.stdout }} "
+  retries: 5
+  environment:
+    no_proxy: $no_proxy,.svc,.svc.cluster.local
+  notify:
+    - Recreate kube-dns
+  register: join_cluster

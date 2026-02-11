@@ -1,0 +1,16 @@
+ssh_username       = ""
+ssh_password       = ""
+vsphere_password   = ""
+vsphere_server     = ""
+vsphere_username   = ""
+vsphere_insecure   = true
+vsphere_datacenter = ""
+vsphere_cluster    = ""
+vsphere_datastore  = ""
+vsphere_network    = ""
+vsphere_template   = ""
+vsphere_folder     = ""
+dns_server_list    = [""]
+docker_password    = ""
+docker_user        = ""
+docker_mirror_ip   = ""

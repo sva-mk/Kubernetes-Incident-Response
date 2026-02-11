@@ -1,0 +1,18 @@
+---
+exclude_paths:
+  - .gitlab-ci.yml
+
+skip_list:
+  - role-name[path]
+  - no-changed-when
+  - command-instead-of-shell
+
+# Ansible-lint does not automatically load rules that have the 'opt-in' tag.
+# You must enable opt-in rules by listing each rule 'id' below.
+enable_list:
+  - args
+  - empty-string-compare
+  - no-log-password
+  - no-same-owner
+  - name[prefix]
+  - yaml

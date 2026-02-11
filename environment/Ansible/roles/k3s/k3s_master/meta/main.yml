@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: commons/os_checker }
+  - { role: commons/k3s_version }

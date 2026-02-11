@@ -1,0 +1,25 @@
+---
+
+- name: cilium_init | Execute cilium install command
+  ansible.builtin.shell:
+    cmd: |
+        KUBECONFIG=./.kube/config cilium install --version 1.14.4 --set encryption.enabled=true \
+        --set encryption.type=wireguard --wait --set encryption.nodeEncryption=true
+  changed_when: false
+  args:
+    executable: /bin/bash
+
+- name: cilium_init | Check if Cilium installed correctly
+  ansible.builtin.shell:
+    cmd: KUBECONFIG=./.kube/config cilium status --wait --wait-duration 10m 1>/dev/null
+  register: cilium_install_result_2
+  changed_when: false
+  args:
+    executable: /bin/bash
+
+- name: cilium_init | Init hubble command
+  ansible.builtin.shell:
+    cmd: KUBECONFIG=./.kube/config cilium hubble enable
+  changed_when: false
+  args:
+    executable: /bin/bash

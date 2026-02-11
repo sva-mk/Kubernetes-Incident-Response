@@ -1,0 +1,23 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Fail if master node count == 0
+  ansible.builtin.fail:
+    msg: No master node configured - RKE2 needs at least one master node.
+  when: groups['master'] | length == 0
+
+- name: Fail if container runtime is not containerd
+  ansible.builtin.fail:
+    msg: RKE2 is only supported with containerd runtime
+  when: container_runtime != "containerd"
+
+- name: Fail if network plugin is not supported
+  ansible.builtin.fail:
+    msg: RKE2 is only supported with cilium, calico or canal at the moment
+  when: network_cni != "cilium" and network_cni != "calico" and network_cni != "canal"
+
+- name: Fail if container_runtime_version is configured
+  ansible.builtin.fail:
+    msg: Containerd is bundled with rke2. Therefore version is defined via kube_version
+  when: container_runtime_version != "undefined"

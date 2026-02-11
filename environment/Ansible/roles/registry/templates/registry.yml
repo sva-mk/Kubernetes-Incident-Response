@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  registry-mirror:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - /var/data/registry/registry-mirror-data:/var/lib/registry
+      - /etc/docker/registry/config.yml:/etc/docker/registry/config.yml

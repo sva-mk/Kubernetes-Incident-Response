@@ -1,0 +1,20 @@
+---
+- name: Get all K3s versions from GitHub releases
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/rancher/k3s/releases?per_page=100
+    method: GET
+    return_content: true
+  register: github_response
+
+- name: Escape Kubernetes version
+  ansible.builtin.set_fact:
+    escaped_kube_version: "{{ kube_version }}\\+"
+
+- name: Parse GitHub API response to get K3s versions
+  ansible.builtin.set_fact:
+    k3s_versions: "{{ github_response.json | map(attribute='tag_name') | select('search', escaped_kube_version) | reject('search', 'rc') | sort | list }}"
+
+- name: Fail if no suitable K3s version has been found
+  ansible.builtin.fail:
+    msg: No suitable K3s version has been found.
+  when: k3s_versions is not defined or k3s_versions | length == 0

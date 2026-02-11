@@ -1,0 +1,70 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Check if kubeadm has already run
+  ansible.builtin.stat:
+    path: /etc/kubernetes/pki/ca.key
+  register: kubeadm_ca
+
+- name: Init cluster if needed
+  ansible.builtin.include_tasks: init.yml
+  when: not kubeadm_ca.stat.exists
+
+- name: Upload Certificates
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.shell: set -o pipefail && kubeadm init phase upload-certs --upload-certs | grep -vw -e certificate -e Namespace
+  register: certificate_key
+  args:
+    executable: /bin/bash
+
+- name: Print and register kubeadm token
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.command: kubeadm token create --print-join-command
+  register: token
+
+- name: Check if kubelet.conf exists
+  ansible.builtin.stat:
+    path: /etc/kubernetes/kubelet.conf
+  register: kubelet_conf
+
+- name: Join to cluster if needed
+  ansible.builtin.include_tasks: join.yml
+  when: not kubelet_conf.stat.exists
+
+- name: Create Kubernetes config directory
+  ansible.builtin.file:
+    path: .kube/
+    state: directory
+    mode: "0755"
+
+- name: Copy admin.conf to Home directory
+  ansible.builtin.copy:
+    src: "{{ kubeadmin_config }}"
+    dest: .kube/config
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
+    mode: "0755"
+    remote_src: true
+
+- name: Enable and check kubelet service
+  ansible.builtin.systemd:
+    name: kubelet
+    daemon_reload: true
+    state: started
+    enabled: true
+  register: started_kubelet
+
+- name: Copy kubeconfig file
+  ansible.builtin.fetch:
+    src: "{{ kubeadmin_config }}"
+    dest: ./../Ansible/.terraform/{{ workspace }}/kubeconfig
+    flat: true
+  run_once: true
+
+- name: Copy kubeconfig file for user
+  ansible.builtin.fetch:
+    src: "{{ kubeadmin_config }}"
+    dest: ../kubeconfigs/{{ workspace }}/kubeconfig
+    flat: true
+  run_once: true

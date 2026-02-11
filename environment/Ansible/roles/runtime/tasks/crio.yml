@@ -1,0 +1,67 @@
+---
+- name: crio | Wait for Unattended Upgrades
+  become: true
+  ansible.builtin.command: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: crio | Add CRI-O apt keys
+  ansible.builtin.apt_key:
+    url: "{{ item }}"
+    state: present
+  loop:
+    - https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ container_runtime_version }}/{{ crio_os_version }}/Release.key
+    - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os_version }}/Release.key
+
+- name: crio | Add Kubic project repository
+  ansible.builtin.apt_repository:
+    repo: deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os_version }}/ /
+    filename: devel:kubic:libcontainers:stable
+    state: present
+    update_cache: true
+
+- name: crio | Add CRI-O repository
+  ansible.builtin.apt_repository:
+    repo: deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ container_runtime_version }}/{{ crio_os_version }}/ /
+    filename: devel:kubic:libcontainers:stable:cri-o
+    state: present
+
+- name: crio | Install CRI-O
+  when: ansible_os_family == "Debian"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - cri-o
+    - cri-o-runc
+
+- name: crio | Hold CRI-O version
+  when: ansible_os_family == "Debian"
+  ansible.builtin.dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  loop:
+    - cri-o
+    - cri-o-runc
+
+- name: crio | Create registry config directory
+  ansible.builtin.file:
+    path: /etc/containers/
+    state: directory
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
+    mode: "0755"
+
+- name: crio | Copy registry config
+  ansible.builtin.template:
+    src: crio_registry.j2
+    dest: /etc/containers/registries.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: crio | Enable and check CRI-O service
+  ansible.builtin.systemd:
+    name: crio
+    daemon_reload: true
+    state: restarted
+    enabled: true
+  register: started_runtime

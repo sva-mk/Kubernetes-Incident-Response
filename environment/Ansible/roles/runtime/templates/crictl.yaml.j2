@@ -1,0 +1,5 @@
+runtime-endpoint: unix:///var/run/{{ container_runtime }}/{{ container_runtime }}.sock
+image-endpoint: unix:///var/run/{{ container_runtime }}/{{ container_runtime }}.sock
+timeout: 10
+#debug: true
+debug: false

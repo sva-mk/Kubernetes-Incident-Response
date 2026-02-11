@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: commons/os_checker }
+  - { role: commons/rke2_version }

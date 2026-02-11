@@ -1,0 +1,5 @@
+server = "https://registry-1.docker.io"
+
+[host."http://{{ docker_mirror_ip }}:5000"]
+  capabilities = ["pull", "resolve"]
+  skip_verify = true

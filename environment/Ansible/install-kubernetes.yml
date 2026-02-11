@@ -1,0 +1,37 @@
+---
+- name: Check if the prerequesits are met
+  hosts: kube-cluster
+  gather_facts: true
+  become: true
+  roles:
+    - { role: kubernetes/prechecks, tags: prechecks }
+
+
+- name: Install Container runtime
+  hosts: kube-cluster
+  gather_facts: true
+  become: true
+  roles:
+    - { role: runtime, tags: runtime }
+
+- name: Install Kubernetes engine on master nodes with cni
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: kubernetes/master, tags: master }
+    - { role: cni, tags: cni }
+
+- name: Install Kubernetes engine on worker nodes
+  hosts: node
+  gather_facts: true
+  become: true
+  roles:
+    - { role: kubernetes/node, tags: node }
+
+- name: Install example applications
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: applications, tags: applications }

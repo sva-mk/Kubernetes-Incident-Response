@@ -1,0 +1,43 @@
+---
+- name: pkg | Add Kubernetes APT GPG key
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_key:
+    url: https://pkgs.k8s.io/core:/stable:/{{ kube_version | split('.') | first }}.{{ (kube_version | split('.'))[1] }}/deb/Release.key
+    state: present
+
+- name: pkg | Add Kubernetes APT repository
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_repository:
+    repo: deb https://pkgs.k8s.io/core:/stable:/{{ kube_version | split('.') | first }}.{{ (kube_version | split('.'))[1] }}/deb/ /
+    state: present
+    filename: kubernetes
+
+- name: pkg | Add Kubernetes yum repository
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.yum_repository:
+    name: Kubernetes
+    description: Kubernetes Repository
+    file: kubernetes
+    baseurl: http://yum.kubernetes.io/repos/kubernetes-el7-x86_64
+    enabled: true
+    gpgcheck: false
+
+- name: pkg | Install kubernetes packages (RHEL/CentOS)
+  when: ansible_os_family == "RedHat"
+  ansible.builtin.dnf:
+    name: "{{ pre_install_pkgs }}"
+    update_cache: true
+    state: installed
+  with_items: "{{ pre_install_pkgs }}"
+
+- name: pkg | Wait for Unattended Upgrades
+  become: true
+  ansible.builtin.command: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: pkg | Install kubernetes packages (Debian/Ubuntu)
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name: "{{ pre_install_pkgs }}"
+    update_cache: true
+    state: present
+  with_items: "{{ pre_install_pkgs }}"

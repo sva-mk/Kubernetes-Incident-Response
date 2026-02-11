@@ -1,0 +1,30 @@
+---
+- name: init | Create Kubernetes addon directory
+  ansible.builtin.file:
+    path: "{{ network_dir }}"
+    state: directory
+    mode: "755"
+
+- name: "init | Copy YAML files: {{ network_cni }}"
+  ansible.builtin.template:
+    mode: "644"
+    src: "{{ item }}"
+    dest: "{{ network_dir }}/{{ item | basename | regex_replace('\\.j2', '') }}"
+  with_fileglob:
+    - ../templates/{{ network_cni }}*.j2
+
+- name: "init | Check if daemonset is working: {{ network_cni }}"
+  ansible.builtin.shell: set -o pipefail && kubectl --kubeconfig={{ kubeadmin_config }} get ds --all-namespaces | grep {{ network_cni }}
+  delegate_to: "{{ groups['master'][0] }}"
+  run_once: true
+  register: check_net
+  ignore_errors: true
+  changed_when: false
+  args:
+    executable: /bin/bash
+
+- name: "init | Create network daemonset: {{ network_cni }}"
+  when: check_net is failed
+  ansible.builtin.command: kubectl apply --kubeconfig={{ kubeadmin_config }} -f {{ network_dir }}/
+  delegate_to: "{{ groups['master'][0] }}"
+  run_once: true

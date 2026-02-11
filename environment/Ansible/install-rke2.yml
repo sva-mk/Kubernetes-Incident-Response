@@ -1,0 +1,31 @@
+---
+- name: Check if the prerequesits are met
+  hosts: kube-cluster
+  gather_facts: true
+  become: true
+  roles:
+    - { role: rke2/rke2_prechecks, tags: rke2_prechecks }
+
+- name: Install RKE2 engine on master node with selected cni
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: rke2/rke2_master, tags: rke2_master }
+    - { role: cni, tags: cni }
+
+
+- name: Install RKE2 engine on worker nodes
+  hosts: node
+  gather_facts: true
+  become: true
+  roles:
+    - { role: rke2/rke2_node, tags: rke2_node }
+
+
+- name: Install example applications
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: applications, tags: applications }

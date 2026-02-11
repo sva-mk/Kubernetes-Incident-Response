@@ -1,0 +1,17 @@
+---
+- name: init | Init K3s cluster
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.shell: |
+    set -o pipefail && curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="{{ k3s_versions | last }}" K3S_KUBECONFIG_MODE="644" \
+            sh -s - \
+            --cluster-cidr {{ pod_network_cidr }} \
+            --service-cidr {{ service_cidr }} \
+            --advertise-address {{ master_ip }} \
+            --bind-address {{ master_ip }} \
+            {{ kubeadm_opts }} \
+            {{ init_opts }}
+  register: init_cluster
+  environment:
+    no_proxy: $no_proxy,.svc,.svc.cluster.local
+  args:
+    executable: /bin/bash

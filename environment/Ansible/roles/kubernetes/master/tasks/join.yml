@@ -1,0 +1,10 @@
+---
+- name: join | Join other control-plane nodes
+  when: inventory_hostname != groups['master'][0]
+  ansible.builtin.shell:
+    cmd: "{{ hostvars[groups['master'][0]].token.stdout }} --control-plane --certificate-key {{ hostvars[groups['master'][0]].certificate_key.stdout }}"
+  retries: 5
+  environment:
+    no_proxy: $no_proxy,.svc,.svc.cluster.local
+  notify:
+    - Recreate kube-dns

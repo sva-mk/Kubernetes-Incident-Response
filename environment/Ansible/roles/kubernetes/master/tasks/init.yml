@@ -1,0 +1,19 @@
+---
+- name: init | Reset Kubernetes component
+  ansible.builtin.command: kubeadm reset --force --cri-socket=/var/run/{{ container_runtime }}/{{ container_runtime }}.sock
+  register: reset_cluster
+
+- name: init | Init Kubernetes cluster
+  when: reset_cluster is succeeded and inventory_hostname == groups['master'][0]
+  ansible.builtin.command: |
+    kubeadm init --service-cidr {{ service_cidr }} \
+                 --kubernetes-version {{ kube_version }} \
+                 --pod-network-cidr {{ pod_network_cidr }} \
+                 --token {{ token }} \
+                 --apiserver-advertise-address {{ master_ip }} \
+                 --control-plane-endpoint {{ master_ip }}
+                 {{ kubeadm_opts }} \
+                 {{ init_opts }}
+  register: init_cluster
+  environment:
+    no_proxy: $no_proxy,.svc,.svc.cluster.local

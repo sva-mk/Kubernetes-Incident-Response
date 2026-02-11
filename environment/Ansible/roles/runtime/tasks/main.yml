@@ -1,0 +1,28 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Install apt-transport-https
+  when: ansible_os_family == "Debian"
+  retries: 5
+  delay: 20
+  ansible.builtin.apt:
+    name: apt-transport-https
+    state: present
+    update_cache: true
+
+- name: Install containerd engine
+  when: container_runtime == "containerd"
+  ansible.builtin.include_tasks: containerd.yml
+
+- name: Install crio engine
+  when: container_runtime == "crio"
+  ansible.builtin.include_tasks: crio.yml
+
+- name: "Copy crictl config"
+  ansible.builtin.template:
+    mode: "644"
+    src: "{{ item }}"
+    dest: "/etc/crictl.yaml"
+  with_fileglob:
+    - ../templates/crictl.yaml.j2

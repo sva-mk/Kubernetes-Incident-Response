@@ -1,0 +1,20 @@
+- name: "miner | Copy YAML files for miner"
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.template:
+    mode: "644"
+    src: "{{ item }}"
+    dest: "{{ tmp_dir }}/{{ item | basename | regex_replace('\\.j2', '') }}"
+  with_fileglob:
+    - ../templates/miner.yml.j2
+
+- name: miner | Deploy miner into cluster
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.command: |
+    kubectl --kubeconfig={{ kubeadmin_config }} apply -f {{ tmp_dir }}/miner.yml
+  register: create_result
+  until: create_result.rc == 0
+  retries: 5
+  delay: 2
+  failed_when: false
+  changed_when: false
+  run_once: true

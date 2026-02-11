@@ -1,0 +1,9 @@
+mirrors:
+  docker.io:
+    endpoint:
+      - "http://{{ docker_mirror_ip }}:5000"
+configs:
+  "{{ docker_mirror_ip }}:5000":
+    auth:
+      username: {{ docker_user }}
+      password: {{ docker_password }}

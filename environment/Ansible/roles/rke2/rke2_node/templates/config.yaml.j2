@@ -1,0 +1,16 @@
+server: https://{{ master_ip }}:9345
+write-kubeconfig-mode: "0644"
+token: "2763193bcc3ccac9d6e369110f1730add9639e5f65ea3945475ede676380c79e"
+profile: "cis-1.23"
+selinux: false
+etcd-snapshot-schedule-cron: "0 */5 * * *"
+etcd-snapshot-retention: 56
+cni:
+{% if network_cni == "cilium" %}
+  - none
+disable:
+  - rke2-canal
+  - rke2-kube-proxy
+{% else %}
+  - {{ network_cni }}
+{% endif %}

@@ -1,0 +1,925 @@
+
+<html>
+<head>
+    <title>THOR Scan Report</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;;style-src https://fonts.googleapis.com &#39;sha256-5wTesSfS70shrk821UoN03jfgtzVVA/SwStYzEkWCSQ=&#39;;script-src https://ajax.googleapis.com &#39;sha256-OaQdqme8lSFucRSg&#43;bblaAyEhOgSRNXEhVHycqrSbPo=&#39; &#39;sha256-mgWozotOLeF8QE7N&#43;aOKQhwT93VoPbQu5TGtJ0eMJDE=&#39;;font-src https://fonts.gstatic.com"/>
+    <style type="text/css">
+        body {
+            background: #FFF;
+            font-family: 'Roboto Condensed', Helvetica, Arial;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 0px;
+        }
+
+        td {
+            min-width: 60px;
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .logo {
+            background: #333;
+            width: 50px;
+            padding: 5px;
+            min-width: 0px;
+        }
+
+        .title {
+            background: #333;
+            font-size: 14px;
+            font-family-weight: bold;
+            color: #FFF;
+        }
+
+        .top {
+            background: #333;
+            font-size: 32px;
+            font-weight: bold;
+            color: #FFF;
+            ext-align: left;
+            padding: 0px 0px 0px 10px;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #333;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFF;
+            text-align: left;
+            padding: 5px;
+        }
+
+        .section {
+            background: #333;
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .noncommercialbanner {
+            background: #C99A22;
+            color: #FFF;
+            font-size: 20px;
+            padding: 4px;
+        }
+
+        .toptable {
+            vertical-align: top;
+            padding: 0px;
+        }
+
+        .toc {
+            background: #31e3e9;
+            color: #222;
+        }
+
+        .thred {
+            background: #e21d52;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .thorange {
+            background: #e8ac13;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .thblue {
+            background: #25bdf9;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .thgrey {
+            background: #444;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .thgreen {
+            background: #43CA6E;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        .thviolet {
+            background: #B45BC0;
+            font-weight: bold;
+            color: #FFF;
+            text-align: left;
+        }
+
+        a {
+            size: 10px;
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        .anker {
+            color: #FFF !important;
+        }
+
+        .aAnker {
+            color: #FFF !important;
+        }
+
+        .key {
+            background: #666666;
+            color: #FFF;
+            min-width: 100px;
+            width: 100px;
+        }
+
+        .hostkey {
+            background: #666666;
+            color: #FFF;
+            width: 99%;
+        }
+
+        .subkey {
+            background: #666;
+            color: #FFF;
+            min-width: 100px;
+            width: 100px;
+        }
+
+        .alert-key {
+            background: #f3a5ba
+        }
+
+        .warning-key {
+            background: #efd9a1
+        }
+
+        .notice-key {
+            background: #b4dbea
+        }
+
+        .info-key {
+            background: #b4eac5
+        }
+
+        .error-key {
+            background: #e1bde6
+        }
+
+        .value {
+            background: #eee;
+            color: #000;
+        }
+
+        .Alert {
+            background: #e21d52;
+            width: 100px;
+            color: #FFF
+        }
+
+        .Warning {
+            background: #C99A22;
+            width: 100px;
+            color: #FFF
+        }
+
+        .Error {
+            background: #B45BC0;
+            width: 100px;
+            color: #FFF
+        }
+
+        .Notice {
+            background: #43A4CA;
+            width: 100px;
+            color: #FFF
+        }
+
+        .Info {
+            background: #43CA6E;
+            width: 100px;
+            color: #FFF
+        }
+
+        .Debug {
+            background: #BBBBBB;
+            width: 100px;
+            color: #FFF
+        }
+
+        ul.tools {
+            display: none;
+            list-style: none;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
+            border: solid 1px #000;
+            position: absolute;
+            background: #fff;
+            padding: 0;
+        }
+
+        ul.tools li {
+            height: 20px;
+            margin: 5px;
+            padding: 2px;
+            cursor: pointer;
+        }
+
+        #status {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            background: #fff;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
+            border: solid 1px #000;
+            padding: 10px;
+            margin-right: 10px;
+             
+        }
+
+        #status > a {
+            color: #25bdf9;
+        }
+
+        .toc > a {
+            color: #000;
+        }
+
+        .field-group {
+            margin-top: 10px;
+        }
+
+        .field-subgroup {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            margin-left: 10px;
+        }
+
+        .value-default {
+        }
+
+        .value-list {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .value-map {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .value-matchstrings {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .key-default {
+            font-weight: bold;
+            display: inline;
+        }
+
+        .key-list {
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+        .key-map {
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+        .key-matchstrings {
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+        .field-list {
+            margin-top: 3px;
+        }
+
+        .match-strings {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+
+        .match-context {
+            padding-left: 20px;
+        }
+
+        #alerts-table, #warnings-table, #notices-table, #infos-table, #errors-table {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-spacing: 0px 5px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var selectionEndTimeout = null;
+        var pageX;
+        var pageY;
+        var currently_selected_text = "";
+        var global_filtered = 0;
+        var last_filter_string = "";
+
+        
+        document.onselectionchange = userSelectionChanged;
+
+        function userSelectionChanged() {
+            
+            if (selectionEndTimeout) {
+                clearTimeout(selectionEndTimeout);
+            }
+            selectionEndTimeout = setTimeout(function () {
+                $(window).trigger('selectionEnd');
+            }, 500);
+        }
+
+        
+        function getSelectionText() {
+            var text = "";
+            if (window.getSelection) {
+                text = window.getSelection().toString();
+            } else if (document.selection && document.selection.type != "Control") {
+                text = document.selection.createRange().text;
+            }
+            return text;
+        }
+
+        $(window).bind('selectionEnd', function () {
+            
+            selectionEndTimeout = null;
+
+            
+            var selectedText = getSelectionText();
+            currently_selected_text = selectedText;
+            
+            if (selectedText != '') {
+                $('ul.tools').css({
+                    'left': pageX,
+                    'top': pageY - 20
+                }).fadeIn(200);
+            } else {
+                $('ul.tools').fadeOut(200);
+            }
+        });
+
+        $(document).on("click", function (e) {
+            $('ul.tools').fadeOut(200);
+        });
+
+        $(document).on("mousedown", function (e) {
+            pageX = e.pageX;
+            pageY = e.pageY;
+        });
+
+        
+        function showhide(id) {
+            if (document.getElementById(id).style.display == 'none') {
+                document.getElementById(id).style.display = 'table-row';
+            }
+        }
+    </script>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<ul class="tools" id="tools">
+    <li id="tools-filter">Filter Out</li>
+    <li id="tools-count">Count Occurrences</li>
+    <li id="tools-search">Search on Google</li>
+    <li id="tools-vt">Search on VirusTotal</li>
+    <li id="tools-riskiq">Search on RiskIQ</li>
+    <li id="tools-valhalla">Lookup rule name in VALHALLA</li>
+</ul>
+<div id="status">
+    No filters applied
+</div>
+    <h1>THOR Scan Report</h1>
+    <p class='noncommercialbanner'>
+        This THOR Lite license permits non-commercial use only.
+        It is strictly prohibited to sell THOR Lite or sell services that include the use of THOR Lite.
+        For details, see the EULA in the ./docs folder.
+        For a special license that covers these cases, allows Sigma scanning and suppresses this message, please contact
+        our sales via <a href="https://www.nextron-systems.com/get-started/">https://www.nextron-systems.com/get-started/</a>
+    </p>
+<table width="100%">
+    <tr>
+        <td class='toptable'>
+            <table width="100%">
+                    <tr>
+                        <th id='Scan Information' colspan='2'>Scan Information</th>
+                    </tr>
+                        <tr>
+                            <td class='key'>Scanner</td>
+                            <td class='value'>Thor</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Version</td>
+                            <td class='value'>10.7.12</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Run on System</td>
+                            <td class='value'>debug</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Argument list</td>
+                            <td class='value'></td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Signature Database</td>
+                            <td class='value'>2024/01/12-114036</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Start Time</td>
+                            <td class='value'>Tue Jan 23 00:51:52 2024</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>End Time</td>
+                            <td class='value'>Tue Jan 23 00:51:59 2024</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>IP Addresses</td>
+                            <td class='value'>10.244.3.7</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Run as user</td>
+                            <td class='value'>root</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Admin rights</td>
+                            <td class='value'>yes</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Platform</td>
+                            <td class='value'>Ubuntu 22.04.3 LTS</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Log File Name</td>
+                            <td class='value'>debug_thor_2024-01-23_0051.txt</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>False Positive Filters Applied</td>
+                            <td class='value'>0</td>
+                        </tr>
+                        <tr>
+                            <td class='key'>Scan ID</td>
+                            <td class='value'>S-WudfD0YCdig</td>
+                        </tr>
+                
+            </table>
+        </td>
+        <td class='toptable'>
+            <table width="100%">
+                <tr>
+                    <th id='Modules' colspan='2'>Modules</th>
+                </tr>
+                
+            </table>
+        </td>
+        <td class='toptable'>
+            <table width="100%">
+                <tr>
+                    <th id='Statistics' colspan='2'>Statistics</th>
+                </tr>
+                <tr>
+                    <td class='Alert'><a href='#Alerts' class='aAnker'>Alerts</a></td>
+                    <td class='value'>0</td>
+                </tr>
+                <tr>
+                    <td class='Warning'><a href='#Warnings' class='aAnker'>Warnings</a></td>
+                    <td class='value'>0</td>
+                </tr>
+                <tr>
+                    <td class='Notice'><a href='#Notices' class='aAnker'>Notice</a></td>
+                    <td class='value'>3</td>
+                </tr>
+                <tr>
+                    <td class='Info'><a href='#Infos' class='aAnker'>Info</a></td>
+                    <td class='value'>129</td>
+                </tr>
+                <tr>
+                    <td class='Error'><a href='#Errors' class='aAnker'>Errors</a></td>
+                    <td class='value'>0</td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <th id='Help' colspan='2'>Help</th>
+                </tr>
+                <tr>
+                    <td class='key'>Shortcuts</td>
+                    <td class='value'>Use Ctrl+&#x2b06; (Windows/Linux) or &#x2318;+&#x2b06; (macOS) to return to the
+                        top of the page
+                    </td>
+                </tr>
+                <tr>
+                    <td class='key'>Filters</td>
+                    <td class='value'>You can provide a file (--filter file) with regular expressions to suppress false
+                        positives
+                    </td>
+                </tr>
+                <tr>
+                    <td class='key'>Hint 1</td>
+                    <td class='value'>Select text and use the context menu to filter / select / lookup strings</td>
+                </tr>
+                <tr>
+                    <td class='key'>Hint 2</td>
+                    <td class='value'>Click on a module to filter for all events from that module.</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table width="100%%" id="errors-table">
+    <tr>
+        <th id='Errors' class="thviolet" colspan='2'>Errors</th>
+    </tr>
+    
+</table>
+<table width="100%%" id="alerts-table">
+    <tr>
+        <th id='Alerts' class="thred" colspan='2'>Alerts</th>
+    </tr>
+    
+</table>
+<table width="100%%" id="warnings-table">
+    <tr>
+        <th id='Warnings' class="thorange" colspan='2'>Warnings</th>
+    </tr>
+    
+</table>
+<table width="100%%" id="notices-table">
+    <tr>
+        <th id='Notices' class="thblue" colspan='2'>Notices</th>
+    </tr>
+            <tr>
+                <td class='key notice-key'>
+                    <div id='Notice-debug'>Notice 1</div>
+                </td>
+                <td class='value'>
+    <i>Jan 23 00:51:44 debug/10.244.3.7</i>
+    <br/>
+    <div class="field-group">
+        
+        <div class="value-default">
+                <div class="key-default">MODULE:</div>
+                    Init
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">MESSAGE:</div>
+                    Some modules and features are not available in Lite version and will be disabled
+        </div>
+    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class='key notice-key'>
+                    <div id='Notice-debug'>Notice 2</div>
+                </td>
+                <td class='value'>
+    <i>Jan 23 00:51:44 debug/10.244.3.7</i>
+    <br/>
+    <div class="field-group">
+        
+        <div class="value-default">
+                <div class="key-default">MODULE:</div>
+                    Startup
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">MESSAGE:</div>
+                    This THOR Lite license permits non-commercial use only. It is strictly prohibited to sell THOR Lite or sell services that include the use of THOR Lite. For details, see the EULA in the ./docs folder. For a special license that covers these cases, allows Sigma scanning and suppresses this message, please contact our sales via https://www.nextron-systems.com/get-started/
+        </div>
+    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class='key notice-key'>
+                    <div id='Notice-debug'>Notice 3</div>
+                </td>
+                <td class='value'>
+    <i>Jan 23 00:51:59 debug/10.244.3.7</i>
+    <br/>
+    <div class="field-group">
+        
+        <div class="value-default">
+                <div class="key-default">MODULE:</div>
+                    Report
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">MESSAGE:</div>
+                    Thor Scan finished
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">END_TIME:</div>
+                    Tue Jan 23 00:51:59 2024
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">ALERTS:</div>
+                    0
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">WARNINGS:</div>
+                    0
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">NOTICES:</div>
+                    2
+        </div>
+        
+        <div class="value-default">
+                <div class="key-default">ERRORS:</div>
+                    0
+        </div>
+    </div>
+                </td>
+            </tr>
+        
+    
+</table>
+
+</body>
+<script>
+
+    
+    function get_filter_info_line() {
+        var total = "Total: " + global_filtered;
+        
+        var undo = "";
+        if (last_filter_string != '' && typeof last_filter_string !== "undefined") {
+            undo = " <a id=\"undo\" href=\"javascript:void(0);\">[undo]</a>";
+        }
+        
+        var reset = "";
+        if (global_filtered > 0) {
+            reset = " <a id=\"reset_all\" href=\"javascript:void(0);\">[reset all]</a>";
+        }
+        
+        return total + undo + reset;
+    }
+
+    function set_filter(action, stats) {
+        var global_info = get_filter_info_line();
+
+        if (stats !== null) {
+            $('#status').html([action, stats, global_info].join('<br/>'));
+        } else {
+            $('#status').html([action, global_info].join('<br/>'));
+        }
+        $('#status #undo').on('click', undo_last_filter)
+        $('#status #reset_all').on('click', reset_all)
+    }
+
+    var cleanTextRegexp = /\s+/g;
+
+    function row_matches_filter(row, filter) {
+        
+        var cellText = row.cells[row.cells.length - 1].textContent;
+        var cleanedCellText = cellText.replaceAll(cleanTextRegexp, " ")
+        var cleanedFilter = filter.replaceAll(cleanTextRegexp, " ")
+        if (cleanedCellText.indexOf(cleanedFilter) == -1) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    function select_only(string) {
+        event.preventDefault();
+        
+        var tables = ["alerts", "warnings", "notices", "infos"];
+        
+        var count = 0;
+        var counts = {'alerts': 0, 'warnings': 0, 'notices': 0, 'infos': 0};
+        for (var i = 0; i < tables.length; i++) {
+            var table = document.getElementById(tables[i] + "-table");
+            if (table == null) {
+                continue;
+            }
+            for (let r in table.rows) {
+                let row = table.rows[r];
+                
+                if (typeof (row.cells) == 'undefined') {
+                    continue;
+                }
+                
+                if (row.cells.length < 2) {
+                    continue;
+                }
+                if (!row_matches_filter(row, string)) {
+                    row.style.display = "none";
+                    count++;
+                    counts[tables[i]]++;
+                }
+            }
+        }
+        
+        last_filter_string = "";
+        
+        global_filtered = global_filtered + count;
+        
+        var elements = "";
+        count > 1 ? elements = "elements" : elements = "element";
+        
+        var action = "Filtered the other " + count + " " + elements;
+        var stats = "Alerts: " + counts['alerts'] + " Warnings: " + counts['warnings'] + " Notices: " + counts['notices'];
+        set_filter(action, stats);
+    }
+
+
+    
+    $('#tools-filter').on('click', function (event) {
+        event.preventDefault();
+        
+        var tables = ["alerts", "warnings", "notices", "infos"];
+        
+        var count = 0;
+        var counts = {'alerts': 0, 'warnings': 0, 'notices': 0, 'infos': 0};
+        for (var i = 0; i < tables.length; i++) {
+            var table = document.getElementById(tables[i] + "-table");
+            if (table == null) {
+                continue;
+            }
+            for (let r in table.rows) {
+                let row = table.rows[r];
+                
+                if (typeof (row.cells) == 'undefined') {
+                    continue;
+                }
+                
+                if (row.cells.length < 2) {
+                    continue;
+                }
+                if (row_matches_filter(row, currently_selected_text)) {
+                    row.style.display = "none";
+                    count++;
+                    counts[tables[i]]++;
+                }
+            }
+        }
+        
+        last_filter_string = currently_selected_text;
+        
+        global_filtered = global_filtered + count;
+        
+        var elements = "";
+        count > 1 ? elements = "elements" : elements = "element";
+        
+        var action = "Filtered " + count + " " + elements;
+        var stats = "Alerts: " + counts['alerts'] + " Warnings: " + counts['warnings'] + " Notices: " + counts['notices'];
+        set_filter(action, stats);
+    });
+
+    
+    function undo_last_filter() {
+        
+        var tables = ["alerts", "warnings", "notices", "infos"];
+        
+        var count = 0;
+        var counts = {'alerts': 0, 'warnings': 0, 'notices': 0, 'infos': 0};
+        for (var i = 0; i < tables.length; i++) {
+            var table = document.getElementById(tables[i] + "-table");
+            if (table == null) {
+                continue;
+            }
+            for (let r in table.rows) {
+                let row = table.rows[r];
+                
+                if (typeof (row.cells) == 'undefined') {
+                    continue;
+                }
+                
+                if (row.cells.length < 2) {
+                    continue;
+                }
+                if (row_matches_filter(row, last_filter_string)) {
+                    row.style.display = "";
+                    count++;
+                    counts[tables[i]]++;
+                }
+            }
+        }
+        
+        last_filter_string = currently_selected_text;
+        
+        global_filtered = global_filtered - count;
+        
+        var elements = "";
+        count > 1 ? elements = "elements" : elements = "element";
+        
+        var action = "Readded " + count + " " + elements;
+        var stats = "Alerts: " + counts['alerts'] + " Warnings: " + counts['warnings'] + " Notices: " + counts['notices'];
+        set_filter(action, stats);
+    }
+
+    
+    $('#tools-count').on('click', function (event) {
+        event.preventDefault();
+        var count = 0;
+        
+        var tables = ["alerts", "warnings", "notices", "infos"];
+        
+        for (var i = 0; i < tables.length; i++) {
+            var table = document.getElementById(tables[i] + "-table");
+            if (table == null) {
+                continue;
+            }
+            for (let r in table.rows) {
+                let row = table.rows[r];
+                
+                if (typeof (row.cells) == 'undefined') {
+                    continue;
+                }
+                
+                if (row.cells.length < 2) {
+                    continue;
+                }
+                if (row_matches_filter(row, currently_selected_text)) {
+                    count++;
+                }
+            }
+        }
+        
+        var elements = "";
+        count > 1 ? elements = "elements" : elements = "element";
+        var action = "Found " + count + " " + elements;
+        set_filter(action, null);
+    });
+
+    
+    $('#tools-search').on('click', function (event) {
+        event.preventDefault();
+        window.open('http://google.com/search?q="' + currently_selected_text + '"');
+    });
+
+    
+    $('#tools-vt').on('click', function (event) {
+        event.preventDefault();
+        window.open('https://www.virustotal.com/gui/search/' + currently_selected_text);
+    });
+
+    
+    $('#tools-valhalla').on('click', function (event) {
+        event.preventDefault();
+        window.open('https://valhalla.nextron-systems.com/info/rule/' + currently_selected_text);
+    });
+
+    
+    $('#tools-riskiq').on('click', function (event) {
+        event.preventDefault();
+        window.open('https://community.riskiq.com/research?query=' + currently_selected_text);
+    });
+
+    $('.module-filter').on('click', function (event) {
+        select_only('MODULE: ' + event.target.id.replace("module-", ""));
+    })
+
+    
+    function reset_all() {
+        
+        var tables = ["alerts", "warnings", "notices", "infos"];
+        
+        for (var i = 0; i < tables.length; i++) {
+            var table = document.getElementById(tables[i] + "-table");
+            if (table == null) {
+                continue;
+            }
+            for (let r in table.rows) {
+                let row = table.rows[r];
+                
+                if (typeof (row.cells) == 'undefined') {
+                    continue;
+                }
+                
+                if (row.cells.length < 2) {
+                    continue;
+                }
+                row.style.display = "";
+            }
+        }
+        last_filter_string = "";
+        global_filtered = 0;
+        $('#status').html("All filters have been reset");
+    }
+</script>
+</html>

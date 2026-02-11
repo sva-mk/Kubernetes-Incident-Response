@@ -1,0 +1,13 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Fail if no master node is configured
+  ansible.builtin.fail:
+    msg: No master node configured - Kubernetes needs at least one master node.
+  when: groups['master'] | length <= 0
+
+- name: Fail if container_runtime_version is not configured
+  ansible.builtin.fail:
+    msg: Kubernetes is not bundled with a container runtime. Therefore a version has to be defined.
+  when: container_runtime_version == "undefined"

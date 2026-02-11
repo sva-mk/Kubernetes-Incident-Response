@@ -1,0 +1,68 @@
+---
+- name: cilium_cli | Install kubectl
+  ansible.builtin.include_role:
+    name: commons/pre_install
+  vars:
+    pre_install_pkgs: ["kubectl={{ kube_version | replace('v', '') }}-*"]
+    pre_install_configure_kubelet: false
+
+- name: cilium_cli | Add Taint to master nodes
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.command: |
+    kubectl --kubeconfig={{ kubeadmin_config }} taint nodes k8s-rancher-master-default-pool-0 \
+          k8s-rancher-master-default-pool-1 k8s-rancher-master-default-pool-2 \
+          node-role.kubernetes.io/control-plane:NoSchedule
+  register: create_result
+  until: create_result.rc == 0
+  retries: 5
+  delay: 2
+  failed_when: false
+  changed_when: false
+
+
+- name: cilium_cli | Downloading cilium CLI archive
+  ansible.builtin.get_url:
+    url: "{{ cni_cilium_cli_url }}"
+    dest: "{{ cni_cilium_cli_tmp_directory }}/{{ cni_cilium_cli_archive }}"
+    checksum: "sha256:{{ cni_cilium_cli_url }}.sha256sum"
+    mode: "0600"
+
+
+- name: cilium_cli | Unarchive cilium CLI
+  ansible.builtin.unarchive:
+    src: "{{ cni_cilium_cli_tmp_directory }}/{{ cni_cilium_cli_archive }}"
+    dest: "{{ cni_cilium_cli_tmp_directory }}"
+    remote_src: true
+
+- name: cilium_cli | Ensure destination directory
+  ansible.builtin.file:
+    path: "{{ cni_cilium_cli_bin_directory }}"
+    state: directory
+    mode: "{{ cni_cilium_cli_bin_directory_mode }}"
+    owner: "{{ cni_cilium_cli_bin_directory_owner }}"
+    group: "{{ cni_cilium_cli_bin_directory_group }}"
+  when:
+    - cni_cilium_cli_bin_directory_owner is defined
+    - cni_cilium_cli_bin_directory_group is defined
+
+- name: cilium_cli | Copy cilium cli binary to destination directory
+  ansible.builtin.copy:
+    src: "{{ cni_cilium_cli_tmp_directory }}/{{ item }}"
+    dest: "{{ cni_cilium_cli_bin_directory }}/{{ item }}"
+    mode: "{{ cni_cilium_cli_binary_mode }}"
+    owner: "{{ cni_cilium_cli_owner }}"
+    group: "{{ cni_cilium_cli_group }}"
+    remote_src: true
+  with_items:
+    - cilium
+
+- name: cilium_cli | Execute cilium version to capture output
+  ansible.builtin.command:
+    cmd: cilium version
+  register: cilium_version_output
+  changed_when: false
+
+- name: cilium_cli | Ensure cilium version output contains correct version string
+  ansible.builtin.assert:
+    that:
+      - "cilium_cli_version in cilium_version_output.stdout"

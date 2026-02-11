@@ -1,0 +1,62 @@
+---
+- name: containerd | Wait for Unattended Upgrades
+  become: true
+  ansible.builtin.command: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: containerd | Add Docker APT GPG key
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: containerd | Add Docker APT repository
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu jammy stable
+    state: present
+    filename: docker
+
+- name: containerd | Install containerd engine (Debian/Ubuntu)
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    update_cache: true
+    name: containerd.io={{ container_runtime_version }}
+    state: present
+
+- name: containerd | Hold containerd version
+  when: ansible_os_family == "Debian"
+  ansible.builtin.dpkg_selections:
+    name: containerd.io
+    selection: hold
+
+- name: containerd | Copy containerd engine service file
+  register: change_docker
+  ansible.builtin.template:
+    src: containerd_config.j2
+    dest: /etc/containerd/config.toml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: containerd | Create registry config directory
+  ansible.builtin.file:
+    path: /etc/containerd/certs.d/docker.io/
+    state: directory
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
+    mode: "0755"
+
+- name: containerd | Copy registry config
+  ansible.builtin.template:
+    src: containerd_registry.j2
+    dest: /etc/containerd/certs.d/docker.io/hosts.toml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: containerd | Enable and check containerd service
+  ansible.builtin.systemd:
+    name: containerd
+    daemon_reload: true
+    state: restarted
+    enabled: true
+  register: started_runtime

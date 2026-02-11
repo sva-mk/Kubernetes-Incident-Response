@@ -1,0 +1,79 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Create K3s config directory
+  ansible.builtin.file:
+    path: /etc/rancher/k3s/
+    state: directory
+    mode: "0755"
+
+- name: Copy registry conf to drop-in directory
+  ansible.builtin.template:
+    src: registries.yaml.j2
+    dest: /etc/rancher/k3s/registries.yaml
+    mode: "0644"
+
+- name: Check if k3s has already run
+  ansible.builtin.stat:
+    path: /var/lib/rancher/k3s/server/tls/server-ca.crt
+  register: k3s_server_ca
+
+- name: Init K3s cluster if needed
+  ansible.builtin.include_tasks: init.yml
+  when: not k3s_server_ca.stat.exists
+
+- name: Register k3s token
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.command: cat /var/lib/rancher/k3s/server/node-token
+  register: token
+
+- name: Create Kubernetes config directory
+  ansible.builtin.file:
+    path: .kube/
+    state: directory
+    mode: "0755"
+
+- name: Copy admin.conf to Home directory
+  ansible.builtin.copy:
+    src: "{{ kubeadmin_config }}"
+    dest: .kube/config
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
+    mode: "0755"
+    remote_src: true
+
+- name: Enable and check k3s service
+  ansible.builtin.systemd:
+    name: k3s
+    daemon_reload: true
+    state: started
+    enabled: true
+  register: started_k3s
+
+- name: Copy kubeconfig file
+  ansible.builtin.fetch:
+    src: "{{ kubeadmin_config }}"
+    dest: ./../Ansible/.terraform/{{ workspace }}/kubeconfig
+    flat: true
+  run_once: true
+
+- name: Copy kubeconfig file for user
+  ansible.builtin.fetch:
+    src: "{{ kubeadmin_config }}"
+    dest: ../kubeconfigs/{{ workspace }}/kubeconfig
+    flat: true
+  run_once: true
+
+
+- name: Add Taint to master nodes
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.command: |
+    kubectl --kubeconfig={{ kubeadmin_config }} taint nodes \
+        k8s-k3s-master-master-pool-0 node-role.kubernetes.io/control-plane:NoSchedule
+  register: create_result
+  until: create_result.rc == 0
+  retries: 5
+  delay: 2
+  failed_when: false
+  changed_when: false

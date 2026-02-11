@@ -1,0 +1,15 @@
+.vscode/**
+/.metadata/
+variables.auto.pkrvars.hcl
+*.bundle
+variables.auto.tfvars
+!it-sec-lab.auto.tfvars
+Terraform/.terraform.lock.hcl
+Terraform/.ssh/**
+!variables.auto.pkrvars.hcl
+Ansible/.terraform/**
+Ansible/hosts.ini
+Packer/Ubuntu_22_04/custom.auto.pkrvars.hcl
+Packer/Ubuntu_22_04/ignore.auto.pkrvars.hcl
+Terraform/ignore.auto.tfvars
+*/.metadata/

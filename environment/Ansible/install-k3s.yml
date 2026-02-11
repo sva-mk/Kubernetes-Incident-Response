@@ -1,0 +1,28 @@
+---
+- name: Check if the prerequesits are met
+  hosts: kube-cluster
+  gather_facts: true
+  become: true
+  roles:
+    - { role: k3s/k3s_prechecks, tags: k3s_prechecks }
+
+- name: Install K3s engine on master node with included cni
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: k3s/k3s_master, tags: k3s_master }
+
+- name: Install K3s engine on worker nodes
+  hosts: node
+  gather_facts: true
+  become: true
+  roles:
+    - { role: k3s/k3s_node, tags: k3s_node }
+
+- name: Install example applications
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - { role: applications, tags: applications }

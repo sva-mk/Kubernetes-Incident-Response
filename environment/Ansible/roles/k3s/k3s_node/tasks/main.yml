@@ -1,0 +1,31 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Create K3s config directory
+  ansible.builtin.file:
+    path: /etc/rancher/k3s/
+    state: directory
+    mode: "0755"
+
+- name: Copy registry conf to drop-in directory
+  ansible.builtin.template:
+    src: registries.yaml.j2
+    dest: /etc/rancher/k3s/registries.yaml
+    mode: "0644"
+
+- name: Check if node password exists
+  ansible.builtin.stat:
+    path: /etc/rancher/node/password
+  register: k3s_node_pwd
+
+- name: Join to cluster if needed
+  ansible.builtin.include_tasks: join.yml
+  when: not k3s_node_pwd.stat.exists
+
+- name: Enable and check k3s-agent service
+  ansible.builtin.systemd:
+    name: k3s-agent
+    daemon_reload: true
+    state: started
+    enabled: true

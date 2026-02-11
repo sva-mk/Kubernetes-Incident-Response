@@ -1,0 +1,20 @@
+---
+- name: Get all RKE2 versions from GitHub releases
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/rancher/rke2/releases?per_page=100
+    method: GET
+    return_content: true
+  register: github_response
+
+- name: Escape Kubernetes version
+  ansible.builtin.set_fact:
+    escaped_kube_version: "{{ kube_version }}\\+"
+
+- name: Parse GitHub API response to get RKE2 versions
+  ansible.builtin.set_fact:
+    rke2_versions: "{{ github_response.json | map(attribute='tag_name') | select('search', escaped_kube_version) | reject('search', 'rc') | sort | list }}"
+
+- name: Fail if no suitable RKE2 version has been found
+  ansible.builtin.fail:
+    msg: No suitable RKE2 version has been found.
+  when: rke2_versions is not defined or rke2_versions | length == 0

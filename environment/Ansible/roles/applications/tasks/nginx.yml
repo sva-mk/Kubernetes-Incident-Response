@@ -1,0 +1,29 @@
+- name: "nginx | Copy YAML files for nginx hardend"
+  when: enable_dashboard and inventory_hostname == groups['master'][0] and workspace == 'rancher'
+  ansible.builtin.template:
+    mode: "644"
+    src: "{{ item }}"
+    dest: "{{ tmp_dir }}/nginx.yml"
+  with_fileglob:
+    - ../templates/nginx_sec.yml.j2
+
+- name: "nginx | Copy YAML files for nginx"
+  when: enable_dashboard and inventory_hostname == groups['master'][0] and workspace != 'rancher'
+  ansible.builtin.template:
+    mode: "644"
+    src: "{{ item }}"
+    dest: "{{ tmp_dir }}/{{ item | basename | regex_replace('\\.j2', '') }}"
+  with_fileglob:
+    - ../templates/nginx.yml.j2
+
+- name: nginx | Deploy kubernetes dashboard into cluster
+  when: enable_dashboard and inventory_hostname == groups['master'][0]
+  ansible.builtin.command: |
+    kubectl --kubeconfig={{ kubeadmin_config }} apply -f {{ tmp_dir }}/nginx.yml
+  register: create_result
+  until: create_result.rc == 0
+  retries: 5
+  delay: 2
+  failed_when: false
+  changed_when: false
+  run_once: true

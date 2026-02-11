@@ -1,0 +1,20 @@
+---
+- name: Include customer specific variables
+  ansible.builtin.include_vars: "{{ var_file }}"
+
+- name: Create Kubernetes tmp directory
+  when: inventory_hostname == groups['master'][0]
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}"
+    state: directory
+    mode: "755"
+
+
+- name: Install nginx example
+  ansible.builtin.include_tasks: nginx.yml
+
+- name: Install dashboard example
+  ansible.builtin.include_tasks: dashboard.yml
+
+- name: Install miner example
+  ansible.builtin.include_tasks: miner.yml

@@ -1,0 +1,27 @@
+---
+
+- name: join | Join other worker nodes
+  when: inventory_hostname != groups['master'][0]
+  ansible.builtin.shell: |
+    set -o pipefail && curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE="agent" INSTALL_RKE2_VERSION="{{ rke2_versions | last }}" \
+            sh -s - \
+            --cluster-cidr {{ pod_network_cidr }} \
+            --service-cidr {{ service_cidr }} \
+            --advertise-address {{ master_ip }} \
+            --bind-address {{ master_ip }} \
+            --node-ip {{ master_ip }} \
+            {{ kubeadm_opts }} \
+            {{ init_opts }}
+  register: init_cluster
+  args:
+    executable: /bin/bash
+  notify:
+    - Recreate kube-dns
+
+- name: join | Enable and check RKE2-agent service
+  ansible.builtin.systemd:
+    name: rke2-agent
+    daemon_reload: true
+    state: started
+    enabled: true
+  register: started_rke2

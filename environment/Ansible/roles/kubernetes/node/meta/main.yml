@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: commons/os_checker }
+  - { role: commons/pre_install, pre_install_pkgs: ["kubelet={{kube_version | replace('v', '')}}-*", "kubeadm={{kube_version | replace('v', '')}}-*"],
+      pre_install_configure_kubelet: true }

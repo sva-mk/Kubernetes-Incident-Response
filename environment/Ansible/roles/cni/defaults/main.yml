@@ -1,0 +1,13 @@
+---
+cni_cilium_cli_bin_directory: "/usr/local/bin"
+cni_cilium_cli_bin_directory_owner: "root"
+cni_cilium_cli_bin_directory_group: "root"
+cni_cilium_cli_bin_directory_mode: "0755"
+cni_cilium_cli_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp', true) }}"
+cni_cilium_cli_owner: "root"
+cni_cilium_cli_group: "root"
+cni_cilium_cli_binary_mode: "0755"
+cni_cilium_cli_os: "linux"
+cni_cilium_cli_arch: "amd64"
+cni_cilium_cli_archive: "cilium-{{ cni_cilium_cli_os }}-{{ cni_cilium_cli_arch }}.tar.gz"
+cni_cilium_cli_url: "https://github.com/cilium/cilium-cli/releases/download/v{{ cilium_cli_version }}/{{ cni_cilium_cli_archive }}"

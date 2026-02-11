@@ -1,0 +1,132 @@
+Jan 23 04:28:00 debug/10.244.120.2 THOR: Notice: MODULE: Init MESSAGE: Some modules and features are not available in Lite version and will be disabled SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:00 debug/10.244.120.2 THOR: Notice: MODULE: Startup MESSAGE: This THOR Lite license permits non-commercial use only. It is strictly prohibited to sell THOR Lite or sell services that include the use of THOR Lite. For details, see the EULA in the ./docs folder. For a special license that covers these cases, allows Sigma scanning and suppresses this message, please contact our sales via https://www.nextron-systems.com/get-started/ SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Thor Version: 10.7.12 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Thor Build: e7cadb29cab1 (2023-11-10 11:08:27) SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Run on system: debug SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Running as user: root SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: User has admin rights: yes SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Working Directory: /thor SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Thor Scan started SCANID: S-CEvMb1Eiwkw START_TIME: Tue Jan 23 04:28:05 2024 HOSTNAME: debug
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Effective argument list: [] SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Platform: Ubuntu 22.04.3 LTS SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Platform DeepEval SCANID: S-CEvMb1Eiwkw NAME: Ubuntu 22.04.3 LTS KERNEL_NAME: Linux  KERNEL_VERSION: 5.15.0-91-generic  PROC: x86_64  ARCH: x86_64
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Language: ?, Zone: UTC SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: System Uptime: 0.07 days SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: CPU Count: 4 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Memory in Megabyte: 3911 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Signature Database: 2024/01/12-114036 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Successfully compiled 0 false positive filters SCANID: S-CEvMb1Eiwkw TYPE: log filter
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Writing report file to: debug_thor_2024-01-23_0428.txt SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Writing csv report file to: debug_files_md5s.csv SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: No json report file will be written SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Writing html report file to: debug_thor_2024-01-23_0428.html SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: Syslog Export: off SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: IP Address 1: 10.244.120.2 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: ScanID: S-CEvMb1Eiwkw SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Startup MESSAGE: System is not a domain controller SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Max. file size to be scanned is 31.5 MB, use --max_file_size to increase the limit SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Selected modules: Autoruns, Cron, EnvCheck, Filescan, Firewall, Hosts, Integritycheck, LoggedIn, ProcessCheck, Rootkit, ServiceCheck, Timestomp, UserDir, Users SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Deselected modules: Artifact-Collector, DeepDive, Dropzone, Thunderstorm SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Selected features: Amcache, Archive, ArchiveScan, AtJobs, Auditlog, AuthorizedKeys, Bifrost2, BulkScan, C2, CPULimit, CheckString, CronParser, DoublePulsar, ETL, EVTX, Eml, EnrichFileInfo, ExeDecompress, FilenameIOCs, Filescan, GroupsXML, KeywordIOCs, Lnk, LogScan, Logger, MagicHeader, OLE, ParseCobaltStrike, Prefetch, ProcessConnections, ProcessHandles, ProgressTracker, RecycleBin, RegistryHive, Rescontrol, SHIMCache, Sigma, SignalHandler, Stix, TeamViewer, ThorDB, VirusTotal, VulnerabilityCheck, WER, WMIPersistence, WebdirScan, WorkerProgressTracker, Yara SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Deselected features: AuditTrail, AuditTrailWriter, Bifrost, DumpScan, ProcessIntegrity SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: System Type: Server SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: License file found SCANID: S-CEvMb1Eiwkw LICENSE: thor/thor-lite-ef5c63a8-fd0eff75-20240112-20250118.lic OWNER: REDACTED TYPE: Lite STARTS: 2024/01/12 EXPIRES: 2025/01/18 SCANNER: THOR Lite VALID: true
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Firewall due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module ServiceCheck due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module UserDir due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module LoggedIn due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Cron due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Hosts due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Integritycheck due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Rootkit due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Timestomp due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module Users due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling module EnvCheck due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature CronParser due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature DoublePulsar due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature RegistryHive due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature SHIMCache due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Sigma due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature ArchiveScan due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature VulnerabilityCheck due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Prefetch due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature BulkScan due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature GroupsXML due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature WER due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature WebdirScan due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Amcache due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Logger due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature MagicHeader due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature ProgressTracker due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Bifrost2 due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Eml due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature ExeDecompress due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature TeamViewer due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Archive due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature EVTX due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature SignalHandler due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Auditlog due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature AuthorizedKeys due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Lnk due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature OLE due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature VirusTotal due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature WMIPersistence due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature AtJobs due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature RecycleBin due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature Stix due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Disabling feature WorkerProgressTracker due to Lite version SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:05 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-all.yas as 'default' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-deepscan-selectors.yasx as 'meta' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-keywords.yas as 'keyword' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-log-sigs.yas as 'log' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-meta.yas as 'meta' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-peids.yas as 'default' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:07 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-process-memory-sigs.yas as 'process' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Adding rule set from thor-lite-registry.yas as 'registry' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Skip sigma initialization, use '--sigma' flag to scan with sigma SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/iocs/c2-iocs.dat as 'domains' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/iocs/filename-iocs.dat as 'filename' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/iocs/hash-iocs.dat as 'hash' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/iocs/keywords.dat as 'keyword' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:08 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/iocs/otx-hash-iocs.dat as 'hash' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Reading iocs from /thor/signatures/misc/file-type-signatures.dat as 'file-type-signatures' type SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully compiled 14 keyword ioc strings SCANID: S-CEvMb1Eiwkw TYPE: IOC
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully compiled 3063 filename ioc strings and 503 filename ioc regexs SCANID: S-CEvMb1Eiwkw TYPE: IOC
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully compiled 50709 malware and 0 false positive hashes SCANID: S-CEvMb1Eiwkw TYPE: IOC
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully compiled 77 file type signatures SCANID: S-CEvMb1Eiwkw TYPE: IOC
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully compiled 1759 malware domains SCANID: S-CEvMb1Eiwkw TYPE: IOC
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: No custom registry excludes defined SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: No custom eventlog excludes defined SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: No custom process excludes defined SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 5195 default YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 0 custom default YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:09 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 95 meta YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 1994 process YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 549 log YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 627 registry YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Yara MESSAGE: Successfully compiled 3 keyword YARA rules SCANID: S-CEvMb1Eiwkw TYPE: YARA
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Init MESSAGE: Successfully created ThorDB SCANID: S-CEvMb1Eiwkw PATH: /var/lib/thor/thor10-lite.db
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Autoruns MESSAGE: Starting module SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Autoruns MESSAGE: Finished module SCANID: S-CEvMb1Eiwkw DURATION: 0 hours 0 mins 0 secs SCANNED_ELEMENTS: 0
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Starting module SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 1 COMMAND: /pause PPID: 0 PARENT:  PROCESS_NAME: pause OWNER:  CREATED: Tue Jan 23 04:27:16 2024 SESSION:  IMAGE_FILE:  IMAGE_TYPE: DIRECTORY IMAGE_CHANGED: Tue Jan 23 04:28:10.551 2024 IMAGE_MODIFIED: Tue Jan 23 04:28:00.803 2024 IMAGE_ACCESSED: Tue Jan 23 04:28:08.011 2024 IMAGE_PERMISSIONS: drwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessConnections MESSAGE: Listening process SCANID: S-CEvMb1Eiwkw PID: 7 COMMAND: nginx: master process nginx -g daemon off; PPID: 0 PARENT:  PROCESS_NAME: nginx OWNER: root CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE: /usr/sbin/nginx IMAGE_TYPE: ELF IMAGE_SIZE: 1536808 IMAGE_MD5: 8163d1b90b0251740f0412f25838ce1f IMAGE_SHA1: 1ed322623762c21bdcfd83364f62eaf3ce0d6df1 IMAGE_SHA256: d7d83d265a5c4ac0bfa99a08eeb00cea59f0e5f2ff0b6e8aeb1eacd01172f87f IMAGE_FIRSTBYTES: 7f454c4602010100000000000000000003003e00 / ELF> IMAGE_CHANGED: Tue Jan 23 02:51:26.002 2024 IMAGE_MODIFIED: Tue Oct 24 16:10:31.000 2023 IMAGE_ACCESSED: Tue Oct 24 16:10:31.000 2023 IMAGE_PERMISSIONS: -rwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root IP: 0.0.0.0 PORT: 80
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessConnections MESSAGE: Listening process SCANID: S-CEvMb1Eiwkw PID: 7 COMMAND: nginx: master process nginx -g daemon off; PPID: 0 PARENT:  PROCESS_NAME: nginx OWNER: root CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE: /usr/sbin/nginx IMAGE_TYPE: ELF IMAGE_SIZE: 1536808 IMAGE_MD5: 8163d1b90b0251740f0412f25838ce1f IMAGE_SHA1: 1ed322623762c21bdcfd83364f62eaf3ce0d6df1 IMAGE_SHA256: d7d83d265a5c4ac0bfa99a08eeb00cea59f0e5f2ff0b6e8aeb1eacd01172f87f IMAGE_FIRSTBYTES: 7f454c4602010100000000000000000003003e00 / ELF> IMAGE_CHANGED: Tue Jan 23 02:51:26.002 2024 IMAGE_MODIFIED: Tue Oct 24 16:10:31.000 2023 IMAGE_ACCESSED: Tue Oct 24 16:10:31.000 2023 IMAGE_PERMISSIONS: -rwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root IP: :: PORT: 80
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 7 COMMAND: nginx: master process nginx -g daemon off; PPID: 0 PARENT:  PROCESS_NAME: nginx OWNER: root CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE: /usr/sbin/nginx IMAGE_TYPE: ELF IMAGE_SIZE: 1536808 IMAGE_MD5: 8163d1b90b0251740f0412f25838ce1f IMAGE_SHA1: 1ed322623762c21bdcfd83364f62eaf3ce0d6df1 IMAGE_SHA256: d7d83d265a5c4ac0bfa99a08eeb00cea59f0e5f2ff0b6e8aeb1eacd01172f87f IMAGE_FIRSTBYTES: 7f454c4602010100000000000000000003003e00 / ELF> IMAGE_CHANGED: Tue Jan 23 02:51:26.002 2024 IMAGE_MODIFIED: Tue Oct 24 16:10:31.000 2023 IMAGE_ACCESSED: Tue Oct 24 16:10:31.000 2023 IMAGE_PERMISSIONS: -rwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 2 LISTEN_PORTS: 80
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 34 COMMAND: nginx: worker process PPID: 7 PARENT: /usr/sbin/nginx PROCESS_NAME: nginx OWNER:  CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE:  IMAGE_TYPE: DIRECTORY IMAGE_CHANGED: Tue Jan 23 04:28:10.551 2024 IMAGE_MODIFIED: Tue Jan 23 04:28:00.803 2024 IMAGE_ACCESSED: Tue Jan 23 04:28:08.011 2024 IMAGE_PERMISSIONS: drwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:  FILE_1: /usr/sbin/nginx EXISTS_1: no
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 35 COMMAND: nginx: worker process PPID: 7 PARENT: /usr/sbin/nginx PROCESS_NAME: nginx OWNER:  CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE:  IMAGE_TYPE: DIRECTORY IMAGE_CHANGED: Tue Jan 23 04:28:10.551 2024 IMAGE_MODIFIED: Tue Jan 23 04:28:00.803 2024 IMAGE_ACCESSED: Tue Jan 23 04:28:08.011 2024 IMAGE_PERMISSIONS: drwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:  FILE_1: /usr/sbin/nginx EXISTS_1: no
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 36 COMMAND: nginx: worker process PPID: 7 PARENT: /usr/sbin/nginx PROCESS_NAME: nginx OWNER:  CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE:  IMAGE_TYPE: DIRECTORY IMAGE_CHANGED: Tue Jan 23 04:28:10.551 2024 IMAGE_MODIFIED: Tue Jan 23 04:28:00.803 2024 IMAGE_ACCESSED: Tue Jan 23 04:28:08.011 2024 IMAGE_PERMISSIONS: drwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:  FILE_1: /usr/sbin/nginx EXISTS_1: no
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 37 COMMAND: nginx: worker process PPID: 7 PARENT: /usr/sbin/nginx PROCESS_NAME: nginx OWNER:  CREATED: Tue Jan 23 04:27:17 2024 SESSION:  IMAGE_FILE:  IMAGE_TYPE: DIRECTORY IMAGE_CHANGED: Tue Jan 23 04:28:10.551 2024 IMAGE_MODIFIED: Tue Jan 23 04:28:00.803 2024 IMAGE_ACCESSED: Tue Jan 23 04:28:08.011 2024 IMAGE_PERMISSIONS: drwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:  FILE_1: /usr/sbin/nginx EXISTS_1: no
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Process info SCANID: S-CEvMb1Eiwkw PID: 38 COMMAND: /bin/bash PPID: 0 PARENT:  PROCESS_NAME: bash OWNER: root CREATED: Tue Jan 23 04:27:18 2024 SESSION:  IMAGE_FILE: /usr/bin/bash IMAGE_TYPE: ELF IMAGE_SIZE: 1396520 IMAGE_MD5: 11227b11f565de042c48654a241e9d1c IMAGE_SHA1: 6b6843dae13e009a3267eed8f472bebe47e39e31 IMAGE_SHA256: 2c336c63e26881d2f02f34379024e7c314bce572c08cbaa319bacbbec29f93ed IMAGE_FIRSTBYTES: 7f454c4602010100000000000000000003003e00 / ELF> IMAGE_CHANGED: Tue Jan 23 04:27:18.619 2024 IMAGE_MODIFIED: Thu Jan  6 16:23:33.000 2022 IMAGE_ACCESSED: Thu Jan  6 16:23:33.000 2022 IMAGE_PERMISSIONS: -rwxr-xr-x IMAGE_OWNER: root IMAGE_GROUP: root CONNECTION_COUNT: 0 LISTEN_PORTS:  FILE_1: /bin/bash EXISTS_1: yes TYPE_1: ELF SIZE_1: 1396520 MD5_1: 11227b11f565de042c48654a241e9d1c SHA1_1: 6b6843dae13e009a3267eed8f472bebe47e39e31 SHA256_1: 2c336c63e26881d2f02f34379024e7c314bce572c08cbaa319bacbbec29f93ed FIRSTBYTES_1: 7f454c4602010100000000000000000003003e00 / ELF> OWNER_1: root GROUP_1: root
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: ProcessCheck MESSAGE: Finished module SCANID: S-CEvMb1Eiwkw DURATION: 0 hours 0 mins 0 secs SCANNED_ELEMENTS: 8
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Filescan MESSAGE: Starting module SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Filescan MESSAGE: The following paths will be scanned: / SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:10 debug/10.244.120.2 THOR: Info: MODULE: Filescan MESSAGE: Scanning / RECURSIVE SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Filescan MESSAGE: Finished module SCANID: S-CEvMb1Eiwkw DURATION: 0 hours 0 mins 4 secs SCANNED_ELEMENTS: 6691
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: ThorDB MESSAGE: Successfully closed ThorDB SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Report MESSAGE: Results SCANID: S-CEvMb1Eiwkw ALERTS: 0 WARNINGS: 0 NOTICES: 2 ERRORS: 0
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Report MESSAGE: For details see the log files written to ["debug_thor_2024-01-23_0428.txt" "debug_thor_2024-01-23_0428.html"] SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Report MESSAGE: Begin Time: Tue Jan 23 04:28:09 2024 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Report MESSAGE: End Time: Tue Jan 23 04:28:15 2024 SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Info: MODULE: Report MESSAGE: Scan took 0 hours 0 mins 6 secs SCANID: S-CEvMb1Eiwkw
+Jan 23 04:28:15 debug/10.244.120.2 THOR: Notice: MODULE: Report MESSAGE: Thor Scan finished SCANID: S-CEvMb1Eiwkw END_TIME: Tue Jan 23 04:28:15 2024 ALERTS: 0 WARNINGS: 0 NOTICES: 2 ERRORS: 0
