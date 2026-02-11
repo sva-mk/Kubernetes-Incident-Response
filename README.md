@@ -1,6 +1,5 @@
-# Responding to Cryptojacking Attacks on Kubernetes Using an Incident Response Playbook
-
-This repository contains all the materials, data, and source code related to the research paper, entitled "Responding to Cryptojacking Attacks on Kubernetes Using an Incident Response Playbook".
+# Towards Model-Driven Incident Response Playbooks for Kubernetes
+This repository contains all the materials, data, and source code related to the research paper, entitled "Towards Model-Driven Incident Response Playbooks for Kubernetes".
 In addition, it comprises a comprehensive presentation of the research findings and the methodology employed.
 These include a detailed description of the developed playbook, including the associated source code for further use in the modeling platform [SecMoF](https://github.com/CardiffUniCOMSC/SecMoF), and a detailed presentation of all identified measures.
 Alongside this, the evaluation of each individual measure is described in detail and evidence of implementation is provided.
@@ -24,7 +23,7 @@ The source code of the experimental environment, which is used to facilitate the
 Furthermore, the directory contains a comprehensive description of the configuration employed for the four test scenarios, as well as a concise justification for the selection of these specific four local Kubernetes distributions for the evaluation of the aforementioned measure collection.
 
 ### Graphics
-The ``graphics` directory contains graphics used in this repository.
+The ``graphics`` directory contains graphics used in this repository.
 
 ## Notes
 - It is recommended that all the included materials, data, and source code be further improved before practical application, given that they were developed as part of scientific research. In particular, the measure collection and incident response playbook included in this repository require further improvement, as they are not yet fully mature. This entails evaluating them in a broader manner as well as in a more comprehensive environment and incorporating additional measures. Furthermore, the playbook, as well as the underlying FRIPP approach, should be improved in the future, in order to facilitate a structured and efficient response to cryptojacking attacks targeting Kubernetes.
